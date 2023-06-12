@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useNotesContext from "../custom_hooks/useNotesContext";
 import { useRef } from "react";
 
+
 function CreateNewNote() {
   const { notes, dispatch } = useNotesContext();
   const noteTitle = useRef("");

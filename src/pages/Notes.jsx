@@ -3,6 +3,11 @@ import useNotesContext from "../custom_hooks/useNotesContext";
 function Notes() {
   const { notes, dispatch } = useNotesContext();
 
+  function clearData(){
+    localStorage.clear();
+    location.reload();
+  }
+
   return (
     <div>
       {notes.length === 0 ? (
@@ -22,6 +27,7 @@ function Notes() {
           +
         </Link>
       </button>
+      <button className="clear-note" onClick={()=>clearData()}>Clear All Notes</button>
     </div>
   );
 }

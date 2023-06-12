@@ -8,14 +8,17 @@ import CreateNewNote from "./pages/CreateNewNote";
 
 import NotesContext from "./contexts/NotesContext";
 
+import { getDatabase, set, ref } from "firebase/database";
+import { app } from "./Firebase";
+
 /*-------------------------------------------------------------------------------------------------------------------*/
 
-const initialNotes = localStorage.getItem('notes')
-  ? JSON.parse(localStorage.getItem('notes'))
+const initialNotes = localStorage.getItem("notes")
+  ? JSON.parse(localStorage.getItem("notes"))
   : [];
 
 function notesReducer(state, action) {
-  console.log(localStorage.getItem('notes'));
+  console.log(localStorage.getItem("notes"));
   switch (action.type) {
     case "add":
       return [
@@ -27,11 +30,16 @@ function notesReducer(state, action) {
   }
 }
 
+const db = getDatabase(app);
+
 function App() {
   const [notes, dispatch] = useReducer(notesReducer, initialNotes);
-  useEffect(()=>{
-    localStorage.setItem('notes', JSON.stringify(notes));
-}, [notes])
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+    set(ref(db, "notes"), {
+      notes: notes
+    });
+  }, [notes]);
 
   return (
     <div className="main">

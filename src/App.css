@@ -16,7 +16,7 @@
     padding: 10px;
     border: 0px;
     border-radius: 10px;
-    bottom: 100px;
+    bottom: 120px;
     right: 120px;
     position: fixed;
     float: right;
@@ -105,4 +105,15 @@
     color: #ffffff;
     text-decoration: none;
     font-size: 18px;
+}
+.clear-note{
+    background-color: #203e2e;
+    padding: 10px;
+    border: 0px;
+    border-radius: 10px;
+    width: 200px;
+    margin-left: 45%;
+    margin-top: 20%;
+    color: white;
+
 }
